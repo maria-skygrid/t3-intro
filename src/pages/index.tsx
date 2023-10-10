@@ -4,8 +4,13 @@ import Head from "next/head";
 import { api } from "~/utils/api";
 
 export default function Home() {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const user = useUser();
+
+  //to fetch all data from DB
+  const {data, error, isLoading} = api.posts.getAll.useQuery();
+
+  const renderData = data?.map((post) => (<div key={post.id}>{post.content}</div>))
+  
   return (
     <>
       <Head>
@@ -16,6 +21,9 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
         { user ? <SignOutButton /> : <SignInButton /> }
         <SignUp />
+        <div>
+          {renderData}
+        </div>
       </main>
     </>
   );
