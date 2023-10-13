@@ -14,8 +14,7 @@ const MainComponent = () => {
 
   const renderData = data?.map((post) => (<div key={post.id}>{post.content}</div>))
 
-  if (data) { return renderData }
-  
+  return renderData 
 }
 
 export default MainComponent;
