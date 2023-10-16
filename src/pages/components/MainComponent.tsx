@@ -3,18 +3,16 @@ import SyncLoader from "react-spinners/SyncLoader";
 
 const MainComponent = () => {
   const {data, error, isLoading} = api.posts.getAll.useQuery();
-
-  if (error) ( 
-    <p>Fetch failed, no data was found</p>
-  );
+  
+  // Early return
+  if(!data) throw new Error(`Fetch failed, no data was found.`)
 
   if (isLoading) ( 
     <SyncLoader size={5} color={"#FFCD00"} />
   );
 
-  const renderData = data?.map((post) => (<div key={post.id}>{post.content}</div>))
+  return data.map((post) => (<div key={post.id}>{post.content}</div>))
 
-  return renderData 
 }
 
 export default MainComponent;
