@@ -14,16 +14,13 @@ const MainComponent = () => {
   }
 
   return data.map(({post, author}) => (
-    <div className="p-8 border-b gap-4 border-slate-700 flex items-center">
+    <div key={post.id}className="p-8 border-b gap-4 border-slate-700 flex items-center">
       <img 
         className="w-12 h-12 rounded-full"
         src={author?.imageUrl} 
         alt="author avatar" 
       />
-      <div 
-        key={post.id}
-        className="">{post.content}
-      </div>
+      <div className="">{post.content}</div>
     </div>
   ))
 
