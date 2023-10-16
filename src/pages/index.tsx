@@ -18,7 +18,7 @@ export default function Home() {
             { user ? <SignOutButton /> : <SignInButton /> }
             <CreatePost />
           </div>
-          <div>
+          <div className="flex flex-col">
             <MainComponent />
           </div>
         </div>
