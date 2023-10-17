@@ -1,6 +1,6 @@
 import { useUser, SignUp, SignOutButton, SignInButton } from "@clerk/nextjs";
 import Head from "next/head";
-import MainComponent from "./components/MainComponent";
+import PostsContainer from "~/components/organisms/PostsContainer";
 import CreatePost from "~/components/CreatePost";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
             <CreatePost />
           </div>
           <div className="flex flex-col">
-            <MainComponent />
+            <PostsContainer />
           </div>
         </div>
       </main>
