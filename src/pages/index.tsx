@@ -1,6 +1,6 @@
 import { useUser, SignUp, SignOutButton, SignInButton } from "@clerk/nextjs";
 import Head from "next/head";
-import PostsContainer from "~/components/organisms/PostsContainer";
+import PostsContainer from "~/components/organisms/PostsContainerOrganism";
 import CreatePost from "~/components/CreatePost";
 
 export default function Home() {
