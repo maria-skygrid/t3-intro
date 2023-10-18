@@ -9,11 +9,7 @@ const PostsContainerOrganism = () => {
     return <div>Loading...</div>
   }
 
-  if (isLoading) {
-    return <SyncLoader size={5} color={"#FFCD00"} />
-  }
-
-  return data.map(({post, author}) => (
+  const posts = data.map(({post, author}) => (
     <div key={post.id}className="p-8 border-b gap-4 border-slate-700 flex items-center">
       <img 
         className="w-12 h-12 rounded-full"
@@ -23,6 +19,12 @@ const PostsContainerOrganism = () => {
       <div className="">{post.content}</div>
     </div>
   ))
+  
+  return (
+    <>
+      { isLoading ? <SyncLoader size={5} color={"#FFCD00"} /> : posts }
+    </>
+  )
 
 }
 
