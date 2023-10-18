@@ -1,7 +1,7 @@
 import { RouterOutputs, api } from "~/utils/api";
 
 // 上記のtypeと同じですが、APIから取得してるデータで作成みたい。
-type Post = RouterOutputs["posts"]["getAll"][number];
+type Post = RouterOutputs["posts"]["index"][number];
 
 const PostMolecule = ({post, author}: Post) => {
   return (

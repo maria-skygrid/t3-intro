@@ -15,7 +15,7 @@ const filterUser = (user: User) => {
 }
 
 export const postRouter = createTRPCRouter({
-  getAll: publicProcedure.query(async({ ctx }) => {
+  index: publicProcedure.query(async({ ctx }) => {
     const posts = await ctx.db.post.findMany({
       take: 100,
     });
@@ -52,3 +52,9 @@ export const postRouter = createTRPCRouter({
 
 //About clerkClient:
 //https://clerk.com/docs/references/backend/overview?utm_source=www.google.com&utm_medium=referral&utm_campaign=none
+
+//About TRPC errors:
+//https://trpc.io/docs/server/error-handling
+
+//Rails API
+//https://qiita.com/k-penguin-sato/items/adba7a1a1ecc3582a9c9

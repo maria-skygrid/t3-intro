@@ -2,7 +2,7 @@ import { api } from "~/utils/api";
 import SyncLoader from "react-spinners/SyncLoader";
 
 const PostsContainerOrganism = () => {
-  const {data, isLoading} = api.posts.getAll.useQuery();
+  const {data, isLoading} = api.posts.index.useQuery();
   
   // Early return
   if(!data) {
