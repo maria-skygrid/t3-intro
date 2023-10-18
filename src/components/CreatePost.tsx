@@ -5,7 +5,7 @@ const CreatePost = () => {
   if (!user) return null;
 
   return (
-    <div className="flex gap-4 w-100">
+    <div className="flex gap-4 w-full">
       { user && (
         <img 
         src={user.imageUrl} 
@@ -19,3 +19,9 @@ const CreatePost = () => {
 }
 
 export default CreatePost;
+
+
+
+
+// メモ
+// w-100 → w-full
