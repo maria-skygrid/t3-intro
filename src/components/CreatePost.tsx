@@ -1,4 +1,5 @@
 import { useUser } from "@clerk/nextjs";
+import AvatarAtom from "./atoms/AvatarAtom";
 
 const CreatePost = () => {
   const { user } = useUser(); 
@@ -7,9 +8,12 @@ const CreatePost = () => {
   return (
     <div className="flex gap-4 w-full">
       { user && (
-        <img 
-        src={user.imageUrl} 
-        className="w-14 h-14 rounded-full"/>
+        <AvatarAtom 
+          src={user.imageUrl}
+          alt="User profile avatar"
+          width={40}
+          height={40}
+        />
       )}
       <input 
         placeholder="What is happening?" 
@@ -19,8 +23,6 @@ const CreatePost = () => {
 }
 
 export default CreatePost;
-
-
 
 
 // メモ
