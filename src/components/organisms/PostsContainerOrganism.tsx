@@ -1,5 +1,6 @@
 import { api } from "~/utils/api";
 import SyncLoader from "react-spinners/SyncLoader";
+import PostMolecule from "../molecules/PostMolecule";
 
 const PostsContainerOrganism = () => {
   const {data, isLoading} = api.posts.index.useQuery();
@@ -9,14 +10,9 @@ const PostsContainerOrganism = () => {
     return <div>Loading...</div>
   }
 
-  const posts = data.map(({post, author}) => (
-    <div key={post.id}className="p-8 border-b gap-4 border-slate-700 flex items-center">
-      <img 
-        className="w-12 h-12 rounded-full"
-        src={author?.imageUrl} 
-        alt="author avatar" 
-      />
-      <div className="">{post.content}</div>
+  const posts = data.map((posts) => (
+    <div key={posts.post.id}>
+      <PostMolecule {...posts} />
     </div>
   ))
   
