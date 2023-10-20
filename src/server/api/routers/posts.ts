@@ -3,7 +3,7 @@ import type { User } from "@clerk/nextjs/dist/types/server";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
-import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { createTRPCRouter, privateProcedure, publicProcedure } from "~/server/api/trpc";
 
 // custom function to filter user properties
 const filterUser = (user: User) => {
@@ -45,8 +45,31 @@ export const postRouter = createTRPCRouter({
         author,
       };
     })
-    
   }),
+
+  // if it is a privateProcedure, we know FOR SURE that the user exists. 
+  // === the user is authenticated
+
+  // To create the post, the user needs to pass this input validation
+  create: privateProcedure
+    .input(
+      z.object({
+        content: z.string().min(1).max(255)
+      })
+    )
+    .mutation( async ({ ctx, input }) => {
+    const authorId = ctx.currentUser.id
+
+    const post = await ctx.db.post.create({
+      data: {
+        authorId, 
+        content: input.content
+      }
+    });
+
+    return post;
+  }),
+
 });
 
 
