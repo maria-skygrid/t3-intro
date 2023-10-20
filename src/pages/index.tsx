@@ -1,10 +1,15 @@
 import { useUser, SignUp, SignOutButton, SignInButton } from "@clerk/nextjs";
 import Head from "next/head";
-import PostsContainer from "~/components/organisms/PostsContainerOrganism";
+import FeedOrganism from "~/components/organisms/FeedOrganism";
 import CreatePost from "~/components/CreatePost";
 
 export default function Home() {
-  const user = useUser();  
+  const { user, isLoaded } = useUser();  
+
+  if (!isLoaded) (
+    <div></div>
+  )
+
   return (
     <>
       <Head>
@@ -14,13 +19,11 @@ export default function Home() {
       </Head>
       <main className="flex justify-center h-screen">
         <div className="border-x w-full md:max-w-2xl border-slate-700 h-full">
-          <div className="border-b border-slate-700 p-4">
+          <div className="border-b border-slate-600 p-4">
             { user ? <SignOutButton /> : <SignInButton /> }
             <CreatePost />
           </div>
-          <div className="flex flex-col">
-            <PostsContainer />
-          </div>
+          <FeedOrganism />
         </div>
       </main>
     </>
