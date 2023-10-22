@@ -9,7 +9,15 @@ const CreatePost = () => {
 
   const [input, setInput] = useState("")
 
-  const { mutate } = api.posts.create.useMutation();
+  const ctx = api.useContext();
+  // if a mutation is happening, we want to render on a different way 
+  // === rerender
+  const { mutate, isLoading } = api.posts.create.useMutation({
+    onSuccess: () => {
+      setInput(""),
+      ctx.posts.index.invalidate();
+    }
+  });
   
   return (
     <div className="flex gap-4 w-full">
@@ -26,6 +34,7 @@ const CreatePost = () => {
         className="grow bg-transparent" 
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        disabled={isLoading}
       />
       <button onClick={() => mutate({content: input})}>Post</button>
     </div>
