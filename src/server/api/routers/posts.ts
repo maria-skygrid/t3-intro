@@ -5,6 +5,8 @@ import { z } from "zod";
 
 import { createTRPCRouter, privateProcedure, publicProcedure } from "~/server/api/trpc";
 
+const modelProcedure = publicProcedure
+
 // custom function to filter user properties
 const filterUser = (user: User) => {
   return {
@@ -15,9 +17,12 @@ const filterUser = (user: User) => {
 }
 
 export const postRouter = createTRPCRouter({
-  index: publicProcedure.query(async({ ctx }) => {
+  index: modelProcedure.query(async({ ctx }) => {
     const posts = await ctx.db.post.findMany({
       take: 100,
+      orderBy: {
+        createdAt: "desc"
+      }
     });
 
     // use clerk client to get authorId from each post
@@ -51,16 +56,14 @@ export const postRouter = createTRPCRouter({
   // === the user is authenticated
 
   // To create the post, the user needs to pass this input validation
+  // ZOD for validation
   create: privateProcedure
-    .input(
-      z.object({
-        content: z.string().min(1).max(255)
-      })
-    )
-    .mutation( async ({ ctx, input }) => {
-    const authorId = ctx.currentUser.id
-
-    const post = await ctx.db.post.create({
+    .input(z.object({ content: z.string().min(1).max(255) }))
+    .mutation(async ({ ctx, input }) => {
+      const authorId = ctx.userId
+      // Create a new post in the database
+      // new endpoint
+      const post = await ctx.db.post.create({
       data: {
         authorId, 
         content: input.content
@@ -81,3 +84,6 @@ export const postRouter = createTRPCRouter({
 
 //Rails API
 //https://qiita.com/k-penguin-sato/items/adba7a1a1ecc3582a9c9
+
+//ZOD validator
+// https://zod.dev/?id=introduction
