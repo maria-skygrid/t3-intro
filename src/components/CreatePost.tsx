@@ -2,6 +2,7 @@ import { useUser } from "@clerk/nextjs";
 import AvatarAtom from "./atoms/AvatarAtom";
 import { api } from "~/utils/api";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const CreatePost = () => {
   const { user } = useUser(); 
@@ -9,14 +10,24 @@ const CreatePost = () => {
 
   const [input, setInput] = useState("")
 
+  //create context
   const ctx = api.useContext();
+
+
   // if a mutation is happening, we want to render on a different way 
   // === rerender
   const { mutate, isLoading } = api.posts.create.useMutation({
     onSuccess: () => {
       setInput(""),
       ctx.posts.index.invalidate();
+    }, 
+    onError: (e) => {
+      const errorMessage = e.data?.zodError?.fieldErrors.content
+      if(errorMessage && errorMessage[0]) {
+        toast.error(errorMessage[0])
+      }
     }
+
   });
   
   return (

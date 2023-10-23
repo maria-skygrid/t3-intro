@@ -58,7 +58,9 @@ export const postRouter = createTRPCRouter({
   // To create the post, the user needs to pass this input validation
   // ZOD for validation
   create: privateProcedure
-    .input(z.object({ content: z.string().min(1).max(255) }))
+    .input(z.object({ content: z.string()
+      .min(1, {message: "Must be at least one character long!"})
+      .max(255, {message: "Only 255 characters allowed!"}) }))
     .mutation(async ({ ctx, input }) => {
       const authorId = ctx.userId
       // Create a new post in the database
