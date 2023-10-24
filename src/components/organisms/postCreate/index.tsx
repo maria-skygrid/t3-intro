@@ -1,10 +1,10 @@
-import { useUser } from "@clerk/nextjs";
-import AvatarAtom from "./atoms/AvatarAtom";
-import { api } from "~/utils/api";
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { useUser } from "@clerk/nextjs"
+import { api } from "~/utils/api"
+import { useState } from "react"
+import toast from "react-hot-toast"
+import AtomsAvatar from "../../atoms/avatar"
 
-const CreatePost = () => {
+const OrganismsPostCreate = () => {
   const { user } = useUser(); 
   if (!user) return null;
 
@@ -33,7 +33,7 @@ const CreatePost = () => {
   return (
     <div className="flex gap-4 w-full">
       { user && (
-        <AvatarAtom 
+        <AtomsAvatar 
           src={user.imageUrl}
           alt="User profile avatar"
           width={40}
@@ -52,7 +52,7 @@ const CreatePost = () => {
   )
 }
 
-export default CreatePost;
+export default OrganismsPostCreate
 
 
 // メモ

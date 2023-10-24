@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-type AvatarProps = {
+type AtomsAvatarProps = {
   src: string, 
   alt: string, 
   styles?: string, 
@@ -8,7 +8,7 @@ type AvatarProps = {
   height: number
 }
 
-const AvatarAtom = ({ src, alt, styles, width, height }: AvatarProps) => {
+const AtomsAvatar = ({ src, alt, styles, width, height }: AtomsAvatarProps) => {
   const imageStyles = `rounded-full ${styles}`
   
   return (
@@ -22,4 +22,4 @@ const AvatarAtom = ({ src, alt, styles, width, height }: AvatarProps) => {
   )
 }
 
-export default AvatarAtom;
+export default AtomsAvatar
