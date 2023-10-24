@@ -1,6 +1,6 @@
 import { useUser } from "@clerk/nextjs"
 import { api } from "~/utils/api"
-import React, { FormEvent, useState } from "react"
+import React, { useState } from "react"
 import toast from "react-hot-toast"
 import AtomsAvatar from "../../atoms/avatar"
 
@@ -22,7 +22,6 @@ const OrganismsPostCreate = () => {
         toast.error(errorMessage[0])
       }
     }
-
   });
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
