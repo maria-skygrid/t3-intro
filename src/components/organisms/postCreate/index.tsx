@@ -6,13 +6,8 @@ import AtomsAvatar from "../../atoms/avatar"
 
 const OrganismsPostCreate = () => {
   const { user } = useUser(); 
-  if (!user) return null;
-
   const [input, setInput] = useState("")
-
-  //create context
   const ctx = api.useContext();
-
 
   // if a mutation is happening, we want to render on a different way 
   // === rerender
@@ -30,6 +25,8 @@ const OrganismsPostCreate = () => {
 
   });
   
+  if (!user) return null;
+
   return (
     <div className="flex gap-4 w-full">
       { user && (
