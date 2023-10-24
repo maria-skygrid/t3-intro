@@ -1,6 +1,6 @@
 import { useUser } from "@clerk/nextjs"
 import { api } from "~/utils/api"
-import { useState } from "react"
+import React, { FormEvent, useState } from "react"
 import toast from "react-hot-toast"
 import AtomsAvatar from "../../atoms/avatar"
 
@@ -25,6 +25,10 @@ const OrganismsPostCreate = () => {
 
   });
   
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value)
+  }
+
   if (!user) return null;
 
   return (
@@ -41,7 +45,7 @@ const OrganismsPostCreate = () => {
         placeholder="What is happening?" 
         className="grow bg-transparent" 
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={handleChange}
         disabled={isLoading}
       />
       <button onClick={() => mutate({content: input})}>Post</button>
@@ -54,3 +58,6 @@ export default OrganismsPostCreate
 
 // メモ
 // w-100 → w-full
+
+// EventForm リスト、、！
+// https://zenn.dev/kenta0313/articles/a39fb1d8edc3a4
