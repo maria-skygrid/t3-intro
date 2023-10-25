@@ -2,6 +2,7 @@ import { RouterOutputs } from "~/utils/api"
 import AtomsAvatar from "../../atoms/avatar"
 import dayjs from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
+import Link from "next/link"
 
 dayjs.extend(relativeTime)
 
@@ -19,8 +20,12 @@ const MoleculesPost = ({post, author}: MoleculesPostType) => {
         height={40}
       />
       <div>
-        <span className="font-bold">@{author.username}</span>
-        <span className="text-sm text-slate-400"> · {dayjs().to(dayjs(post.createdAt))}</span>
+        <Link href={`@${author.id}`}>
+          <span className="font-bold">@{author.username}</span>
+        </Link>
+        <Link href={`/post/${post.id}`}>
+          <span className="text-sm text-slate-400"> · {dayjs().to(dayjs(post.createdAt))}</span>
+        </Link>
         <p>{post.content}</p>
       </div>
     </div>
