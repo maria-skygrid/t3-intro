@@ -1,12 +1,13 @@
+import Layout from "~/components/layouts";
 import HeadsBase from "~/components/heads";
 
 const SinglePostPage = () => {
   return (
     <>
       <HeadsBase />
-      <main className="flex justify-center h-screen">
+      <Layout>
         <p>Post view</p>
-      </main>
+      </Layout>
     </>
   );
 }
