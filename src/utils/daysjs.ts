@@ -3,6 +3,4 @@ import relativeTime from "dayjs/plugin/relativeTime"
 
 dayjs.extend(relativeTime)
 
-export const relTime = (date: ConfigType) => {
-  return dayjs().to(dayjs(date))
-}
+export const relTime = (date: ConfigType) => dayjs().to(dayjs(date))
