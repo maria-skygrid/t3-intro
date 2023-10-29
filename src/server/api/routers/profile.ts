@@ -7,7 +7,7 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 const modelProcedure = publicProcedure
 
 export const profileRouter = createTRPCRouter({
-  getUserByUsername: modelProcedure.input(z.object({
+  show: modelProcedure.input(z.object({
     username: z.string()
   }))
   .query( async({input: {username}}) => {
