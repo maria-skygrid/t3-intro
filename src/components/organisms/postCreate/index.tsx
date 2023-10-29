@@ -17,7 +17,7 @@ const OrganismsPostCreate = () => {
       await ctx.posts.index.invalidate();
     }, 
     onError: (e) => {
-      const errorMessage = e.data?.zodError?.fieldErrors?.content
+      const errorMessage = e.data?.zodError?.fieldErrors.content // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
       if(errorMessage && errorMessage[0]) {
         toast.error(errorMessage[0])
       }
