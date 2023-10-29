@@ -23,7 +23,7 @@ const MoleculesPost = ({post, author}: MoleculesPostType) => {
         <Link href={`@${author.id}`}>
           <span className="font-bold">@{author.username}</span>
         </Link>
-        <Link href={`/post/${post.id}`}>
+        <Link href={`/posts/${post.id}`}>
           <span className="text-sm text-slate-400"> · {dayjs().to(dayjs(post.createdAt))}</span>
         </Link>
         <p>{post.content}</p>
