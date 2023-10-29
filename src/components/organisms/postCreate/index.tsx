@@ -12,9 +12,9 @@ const OrganismsPostCreate = () => {
   // if a mutation is happening, we want to render on a different way 
   // === rerender
   const { mutate, isLoading } = api.posts.create.useMutation({
-    onSuccess: () => {
-      setInput(""),
-      ctx.posts.index.invalidate();
+    onSuccess: async () => {
+      setInput("");
+      await ctx.posts.index.invalidate();
     }, 
     onError: (e) => {
       const errorMessage = e.data?.zodError?.fieldErrors.content
