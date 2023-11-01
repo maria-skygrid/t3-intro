@@ -79,15 +79,21 @@ export const postRouter = createTRPCRouter({
     .input(z.object({ id: z.string() }))
     .mutation(async ({ ctx, input}) => {
       const postId = input.id
-
+      
       const post = await ctx.db.post.findUniqueOrThrow({
         where: {id: postId}
+      })
+      .catch(() => {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Couldn't find any post"
+        })
       })
 
       await ctx.db.post.delete({
         where: {id: postId}
       })
-
+  
       return post
     })
 
