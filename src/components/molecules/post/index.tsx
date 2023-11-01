@@ -20,6 +20,10 @@ const MoleculesPost = ({post, author}: MoleculesPostType) => {
       }
   })
 
+  const onClickMutate = () => {
+    mutate({id: post.id})
+  }
+
   return (
     <div key={post.id}className="p-4 border-b gap-4 border-slate-700 flex items-start">
       <AtomsAvatar
@@ -34,7 +38,7 @@ const MoleculesPost = ({post, author}: MoleculesPostType) => {
         <p>{post.content}</p>
         {user?.id === author.id && (
           <button
-            onClick={() => mutate({id: post.id})}
+            onClick={onClickMutate}
             className="text-red-500 hover:cursor-pointer mt-3">
             <MdDeleteForever />
           </button>
