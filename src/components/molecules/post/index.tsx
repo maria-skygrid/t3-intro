@@ -11,13 +11,12 @@ type MoleculesPostType = RouterOutputs["posts"]["index"][number];
 const MoleculesPost = ({post, author}: MoleculesPostType) => {
   const { user } = useUser();
 
-  const fetchPosts = api.posts.index.useQuery();
+  const {refetch: refetchPosts} = api.posts.index.useQuery();
   
-  const { mutate, isLoading } = 
+  const { mutate } = 
     api.posts.delete.useMutation({
       onSuccess: () => {
-        fetchPosts;
-        window.location.reload();
+        refetchPosts();
       }
   })
 
