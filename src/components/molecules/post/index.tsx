@@ -1,6 +1,7 @@
 import { RouterOutputs } from "~/utils/api"
 import AtomsAvatar from "../../atoms/avatar"
 import { relTime } from "~/utils/daysjs"
+import Link from "next/link"
 
 // 上記のtypeと同じですが、APIから取得してるデータで作成みたい。
 type MoleculesPostType = RouterOutputs["posts"]["index"][number];
