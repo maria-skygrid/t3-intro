@@ -4,9 +4,9 @@ const ProfilePage = () => {
 
   const { data } = api.profile.show.useQuery({username: 'maria-skygrid'})
   
-  if(!data) {
-    throw new Error("Error: Data not found")
-  }
+  // if(!data) {
+  //   throw new Error("Error: Data not found")
+  // }
 
   return (
     <>
@@ -19,3 +19,5 @@ const ProfilePage = () => {
 }
 
 export default ProfilePage
+
+// react boundary

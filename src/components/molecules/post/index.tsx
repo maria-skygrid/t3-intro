@@ -20,7 +20,7 @@ const MoleculesPost = ({post, author}: MoleculesPostType) => {
         height={40}
       />
       <div>
-        <Link href={`@${author.id}`}>
+        <Link href={`/users/@${author.id}`}>
           <span className="font-bold">@{author.username}</span>
         </Link>
         <Link href={`/posts/${post.id}`}>
