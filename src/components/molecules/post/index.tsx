@@ -6,6 +6,7 @@ import { useUser } from "@clerk/nextjs"
 import { api } from "~/utils/api"
 import Link from "next/link"
 import AtomsRoundButton from "~/components/atoms/button/round-button"
+import MoleculesPostIcons from "../postIcons"
 
 // 上記のtypeと同じですが、APIから取得してるデータで作成みたい。
 type MoleculesPostType = RouterOutputs["posts"]["index"][number];
@@ -34,24 +35,27 @@ const MoleculesPost = ({post, author}: MoleculesPostType) => {
         width={40}
         height={40}
       />
-      <div>
-        <Link href={`/users/@${author.id}`}>
-          <span className="font-bold">@{author.username}</span>
-        </Link>
-        <Link href={`/posts/${post.id}`}>
-          <span className="text-sm text-slate-400"> · {relTime(post.createdAt)}</span>
-        </Link>
-        <p>{post.content}</p>
-        <div>
+      <div className="w-full">
+        <div className="flex items-start">
+          <div className="flex-1">
+            <Link href={`/users/@${author.id}`}>
+              <span className="font-bold">@{author.username}</span>
+            </Link>
+            <Link href={`/posts/${post.id}`}>
+              <span className="text-sm text-slate-400"> · {relTime(post.createdAt)}</span>
+            </Link>
+            <p>{post.content}</p>
+          </div>
           {user?.id === author.id && (
             <AtomsRoundButton
               onClick={onClickMutate}
-              className="text-white hover:text-red-500 hover:bg-red-100/20 "
+              className="text-red-600 bg-red-100/30 hover:bg-red-100/40 "
             >
               <AiOutlineDelete />
             </AtomsRoundButton>
           )}
-         </div>
+        </div>
+        <MoleculesPostIcons />
       </div>
     </div>
   )

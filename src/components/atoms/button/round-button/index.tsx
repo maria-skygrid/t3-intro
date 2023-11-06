@@ -13,7 +13,7 @@ const AtomsRoundButton = ({
 }: AtomsRoundButton) => (
   <button 
     className={classNames(
-      'hover:cursor-pointer px-2 py-2 rounded-full transition-colors',
+      'text-white hover:cursor-pointer px-2 py-2 rounded-full transition-colors',
       className
     )}
     onClick={onClick}>
