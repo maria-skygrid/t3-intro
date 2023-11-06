@@ -1,14 +1,14 @@
 import classNames from "classnames";
 
-type AtomsButtonProps = {
+type AtomsPostButtonProps = {
   children: React.ReactNode
   onClick: () => void
   className?: string
 }
 
-const AtomsButton = ({ 
+const AtomsPostButton = ({ 
   children, onClick, className
-}: AtomsButtonProps) => (
+}: AtomsPostButtonProps) => (
   <button 
     className={classNames(
       'px-5 py-0.5 rounded-full',
@@ -19,4 +19,4 @@ const AtomsButton = ({
   </button>
 )
 
-export default AtomsButton
+export default AtomsPostButton
