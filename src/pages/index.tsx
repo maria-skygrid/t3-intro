@@ -12,16 +12,12 @@ export default function Home() {
 
   return (
     <>
-      <HeadsBase />
-      <main className="flex justify-center h-screen">
-        <div className="border-x w-full md:max-w-2xl border-slate-700 h-full">
-          <div className="border-b border-slate-600 p-4">
-            { user ? <SignOutButton /> : <SignInButton /> }
-            <OrganismsPostCreate />
-          </div>
-          <OrganismsFeed />
-        </div>
-      </main>
+      <HeadsBase /> 
+      <div className="border-b border-slate-600 p-4">      
+        { user ? <SignOutButton /> : <SignInButton /> }
+        <OrganismsPostCreate />
+      </div>
+      <OrganismsFeed /> 
     </>
   );
 }

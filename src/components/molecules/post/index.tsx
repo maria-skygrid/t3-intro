@@ -4,6 +4,7 @@ import { relTime } from "~/utils/daysjs"
 import { MdDeleteForever } from "react-icons/md"
 import { useUser } from "@clerk/nextjs" 
 import { api } from "~/utils/api"
+import Link from "next/link"
 
 // 上記のtypeと同じですが、APIから取得してるデータで作成みたい。
 type MoleculesPostType = RouterOutputs["posts"]["index"][number];
@@ -33,8 +34,12 @@ const MoleculesPost = ({post, author}: MoleculesPostType) => {
         height={40}
       />
       <div>
-        <span className="font-bold">@{author.username}</span>
-        <span className="text-sm text-slate-400"> · {relTime(post.createdAt)}</span>
+        <Link href={`/users/@${author.id}`}>
+          <span className="font-bold">@{author.username}</span>
+        </Link>
+        <Link href={`/posts/${post.id}`}>
+          <span className="text-sm text-slate-400"> · {relTime(post.createdAt)}</span>
+        </Link>
         <p>{post.content}</p>
         {user?.id === author.id && (
           <button
