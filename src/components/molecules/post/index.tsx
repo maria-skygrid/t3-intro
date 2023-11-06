@@ -1,10 +1,11 @@
-import { RouterOutputs } from "~/utils/api"
+import type { RouterOutputs } from "~/utils/api"
 import AtomsAvatar from "../../atoms/avatar"
 import { relTime } from "~/utils/daysjs"
-import { MdDeleteForever } from "react-icons/md"
+import { AiOutlineDelete } from "react-icons/ai"
 import { useUser } from "@clerk/nextjs" 
 import { api } from "~/utils/api"
 import Link from "next/link"
+import AtomsRoundButton from "~/components/atoms/button/round-button"
 
 // 上記のtypeと同じですが、APIから取得してるデータで作成みたい。
 type MoleculesPostType = RouterOutputs["posts"]["index"][number];
@@ -16,8 +17,8 @@ const MoleculesPost = ({post, author}: MoleculesPostType) => {
   
   const { mutate } = 
     api.posts.delete.useMutation({
-      onSuccess: () => {
-        refetchPosts();
+      onSuccess: async () => {
+        await refetchPosts();
       }
   })
 
@@ -41,13 +42,16 @@ const MoleculesPost = ({post, author}: MoleculesPostType) => {
           <span className="text-sm text-slate-400"> · {relTime(post.createdAt)}</span>
         </Link>
         <p>{post.content}</p>
-        {user?.id === author.id && (
-          <button
-            onClick={onClickMutate}
-            className="text-red-500 hover:cursor-pointer mt-3">
-            <MdDeleteForever />
-          </button>
-         )}
+        <div>
+          {user?.id === author.id && (
+            <AtomsRoundButton
+              onClick={onClickMutate}
+              className="text-white hover:text-red-500 hover:bg-red-100/20 "
+            >
+              <AiOutlineDelete />
+            </AtomsRoundButton>
+          )}
+         </div>
       </div>
     </div>
   )
