@@ -3,6 +3,7 @@ import { api } from "~/utils/api"
 import React, { useState } from "react"
 import toast from "react-hot-toast"
 import AtomsAvatar from "../../atoms/avatar"
+import AtomsButton from "~/components/atoms/button"
 
 const OrganismsPostCreate = () => {
   const { user } = useUser(); 
@@ -28,6 +29,10 @@ const OrganismsPostCreate = () => {
     setInput(e.target.value)
   }
 
+  const onClickMutate = () => {
+    mutate({content: input})
+  }
+
   if (!user) return null;
 
   return (
@@ -47,7 +52,12 @@ const OrganismsPostCreate = () => {
         onChange={handleChange}
         disabled={isLoading}
       />
-      <button onClick={() => mutate({content: input})}>Post</button>
+      <AtomsButton 
+        onClick={onClickMutate}
+        className='bg-sky-500 font-bold text-sm hover:bg-sky-600 transition-colors'
+      >
+        Post
+      </AtomsButton>
     </div>
   )
 }
