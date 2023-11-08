@@ -5,38 +5,47 @@ import { GiHistogram } from "react-icons/gi"
 import { LuShare } from "react-icons/lu"
 import AtomsRoundButton from "~/components/atoms/button/round-button";
 
-const MoleculesPostIcons = () => (
-  <div className="text-sm mt-3 flex justify-between flex-1">
-    <AtomsRoundButton
-      className="hover:text-sky-500 hover:bg-sky-100/20 "
-    >
-      <FaRegComment />
-    </AtomsRoundButton>
+const MoleculesPostIcons = () => {
 
-    <AtomsRoundButton
-      className="hover:text-green-500 hover:bg-green-100/20 "
-    >
-      <AiOutlineRetweet />
-    </AtomsRoundButton>
+  const PostIconsArray = [
+    {
+      id: 1, 
+      icon: FaRegComment,
+      buttonStyle: 'hover:text-sky-500 hover:bg-sky-100/20'
+    },
+    {
+      id: 2, 
+      icon: AiOutlineRetweet,
+      buttonStyle: 'hover:text-green-500 hover:bg-green-100/20'
+    }, 
+    {
+      id: 3, 
+      icon: AiOutlineHeart,
+      buttonStyle: 'hover:text-red-500 hover:bg-red-100/20'
+    }, 
+    {
+      id: 4, 
+      icon: GiHistogram,
+      buttonStyle: 'hover:text-sky-500 hover:bg-sky-100/20'
+    }, 
+    {
+      id: 5, 
+      icon: LuShare,
+      buttonStyle: 'hover:text-sky-500 hover:bg-sky-100/20'
+    }
+  ]
 
-    <AtomsRoundButton
-      className="hover:text-red-500 hover:bg-red-100/20 "
-    >
-      <AiOutlineHeart />
-    </AtomsRoundButton>
-
-    <AtomsRoundButton
-      className="hover:text-sky-500 hover:bg-sky-100/20 "
-    >
-      <GiHistogram />
-    </AtomsRoundButton>
-
-    <AtomsRoundButton
-      className="hover:text-sky-500 hover:bg-sky-100/20 "
-    >
-      <LuShare />
-    </AtomsRoundButton>
-  </div>
-)
+  return (
+    <div className="text-sm mt-3 flex justify-between flex-1">
+      {
+        PostIconsArray.map(({icon: Icon, buttonStyle, id}) => (
+          <AtomsRoundButton key={id} className={buttonStyle}>
+            <Icon />
+          </AtomsRoundButton>
+        ))
+      }
+    </div>
+  )
+}
 
 export default MoleculesPostIcons
