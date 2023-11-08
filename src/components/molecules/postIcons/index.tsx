@@ -3,7 +3,7 @@ import { AiOutlineRetweet } from "react-icons/ai"
 import { AiOutlineHeart } from "react-icons/ai"
 import { GiHistogram } from "react-icons/gi"
 import { LuShare } from "react-icons/lu"
-import AtomsRoundButton from "~/components/atoms/button/round-button";
+import AtomsButtonRound from "~/components/atoms/button/round"
 
 const MoleculesPostIcons = () => {
 
@@ -39,9 +39,9 @@ const MoleculesPostIcons = () => {
     <div className="text-sm mt-3 flex justify-between flex-1">
       {
         PostIconsArray.map(({icon: Icon, buttonStyle, id}) => (
-          <AtomsRoundButton key={id} className={buttonStyle}>
+          <AtomsButtonRound key={id} className={buttonStyle}>
             <Icon />
-          </AtomsRoundButton>
+          </AtomsButtonRound>
         ))
       }
     </div>

@@ -1,16 +1,16 @@
 import classNames from "classnames";
 
-type AtomsRoundButton = {
+type AtomsButtonRound = {
   children: React.ReactNode
   onClick?: () => void
   className?: string
 }
 
-const AtomsRoundButton = ({
+const AtomsButtonRound = ({
   children, 
   onClick,
   className
-}: AtomsRoundButton) => (
+}: AtomsButtonRound) => (
   <button 
     className={classNames(
       'text-white hover:cursor-pointer px-2 py-2 rounded-full transition-colors',
@@ -21,4 +21,4 @@ const AtomsRoundButton = ({
   </button>
 )
 
-export default AtomsRoundButton
+export default AtomsButtonRound

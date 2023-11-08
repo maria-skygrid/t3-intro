@@ -5,7 +5,7 @@ import { AiOutlineDelete } from "react-icons/ai"
 import { useUser } from "@clerk/nextjs" 
 import { api } from "~/utils/api"
 import Link from "next/link"
-import AtomsRoundButton from "~/components/atoms/button/round-button"
+import AtomsButtonPost from "~/components/atoms/button/post"
 import MoleculesPostIcons from "../postIcons"
 
 // 上記のtypeと同じですが、APIから取得してるデータで作成みたい。
@@ -47,12 +47,12 @@ const MoleculesPost = ({post, author}: MoleculesPostType) => {
             <p>{post.content}</p>
           </div>
           {user?.id === author.id && (
-            <AtomsRoundButton
+            <AtomsButtonPost
               onClick={onClickMutate}
               className="text-red-600 bg-red-100/30 hover:bg-red-100/40 "
             >
               <AiOutlineDelete />
-            </AtomsRoundButton>
+            </AtomsButtonPost>
           )}
         </div>
         <MoleculesPostIcons />
