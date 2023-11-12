@@ -3,7 +3,7 @@ import { api } from "~/utils/api"
 import React, { useState } from "react"
 import toast from "react-hot-toast"
 import AtomsAvatar from "../../atoms/avatar"
-import AtomsButtonPost from "~/components/atoms/button/post"
+import AtomsButtonBase from "~/components/atoms/button/base"
 
 const OrganismsPostCreate = () => {
   const { user } = useUser(); 
@@ -52,12 +52,12 @@ const OrganismsPostCreate = () => {
         onChange={handleChange}
         disabled={isLoading}
       />
-      <AtomsButtonPost 
+      <AtomsButtonBase 
         onClick={onClickMutate}
-        className='bg-sky-500 font-bold text-sm hover:bg-sky-600 transition-colors'
+        className='px-5 py-0.5 bg-sky-500 hover:bg-sky-600'
       >
         Post
-      </AtomsButtonPost>
+      </AtomsButtonBase>
     </div>
   )
 }
