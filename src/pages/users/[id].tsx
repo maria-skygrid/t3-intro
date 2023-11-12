@@ -2,6 +2,8 @@ import HeadsBase from "~/components/heads";
 import { api } from "~/utils/api";
 import AtomsAvatar from "~/components/atoms/avatar";
 import UserPosts from "~/components/organisms/userPosts";
+import { BiArrowBack } from "react-icons/bi"
+import Link from "next/link";
 
 const ProfilePage = () => {
 
@@ -13,12 +15,19 @@ const ProfilePage = () => {
   return (
     <>
       <HeadsBase />
-      <div className="p-4 border-b gap-4 border-slate-700 flex items-start">
-        <div>
-          <p>{data.username}</p>
-          <p className="text-sm text-slate-400">
-            {posts ? posts.length : 0} posts
-          </p>
+      <div className="p-4 gap-4 flex items-start">
+        <div className="flex items-center">
+          <Link 
+            href={`/`}
+            className="text-lg mr-3 px-3 py-3 rounded-full hover:bg-slate-500/20 transition-colors">
+            <BiArrowBack />
+          </Link>
+          <div>
+            <p>{data.username}</p>
+            <p className="text-sm text-slate-400">
+              {posts ? posts.length : 0} posts
+            </p>
+          </div>
         </div>
       </div>
       <div>
