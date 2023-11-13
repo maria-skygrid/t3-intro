@@ -2,11 +2,11 @@ import HeadsBase from "~/components/heads";
 import { api } from "~/utils/api";
 import AtomsAvatar from "~/components/atoms/avatar";
 import UserPosts from "~/components/organisms/userPosts";
-import { BiArrowBack } from "react-icons/bi"
-import { GrLocation } from "react-icons/gr"
-import { GrCalendar } from "react-icons/gr"
 import Link from "next/link";
 import AtomsButtonBase from "~/components/atoms/button/base";
+import { CalendarIcon } from '@heroicons/react/24/solid'
+import { GlobeAltIcon } from '@heroicons/react/24/outline';
+import { BiArrowBack } from "react-icons/bi"
 
 const ProfilePage = () => {
 
@@ -33,9 +33,7 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-slate-900 h-[180px]">
-        <h1>HEADER</h1>
-      </div>
+      <div className="bg-slate-900 h-[180px]"></div>
       <div className='p-5 relative'>
         <AtomsAvatar 
           src={data.imageUrl} 
@@ -55,13 +53,13 @@ const ProfilePage = () => {
           <h1 className="font-bold text-lg">{data.username}</h1>
           <h2 className="text-slate-400">@{data.username}</h2>
           <p className="mt-3">Bio</p>
-          <div className="flex mt-3">
+          <div className="flex mt-3 text-slate-400">
             <div className="flex items-center mr-4">
-              <GrLocation className="mr-1" />
+              <GlobeAltIcon className="w-4 h-4 mr-1" />
               <p>Nara</p>
             </div>
             <div className="flex items-center mr-4">
-              <GrCalendar className="mr-1" />
+              <CalendarIcon className="w-4 h-4 mr-1" />
               <p>Joined at {data.createdAt}</p>
             </div>
           </div>
