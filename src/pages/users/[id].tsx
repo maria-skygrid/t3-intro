@@ -7,6 +7,7 @@ import AtomsButtonBase from "~/components/atoms/button/base";
 import { CalendarIcon } from '@heroicons/react/24/solid'
 import { GlobeAltIcon } from '@heroicons/react/24/outline';
 import { BiArrowBack } from "react-icons/bi"
+import { formatTime } from "~/utils/daysjs";
 
 const ProfilePage = () => {
 
@@ -60,7 +61,7 @@ const ProfilePage = () => {
             </div>
             <div className="flex items-center mr-4">
               <CalendarIcon className="w-4 h-4 mr-1" />
-              <p>Joined at {data.createdAt}</p>
+              <p>Joined at {formatTime(data.createdAt)}</p>
             </div>
           </div>
           <div className="flex items-center mr-4 mt-3">
