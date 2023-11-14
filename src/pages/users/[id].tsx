@@ -1,7 +1,7 @@
 import HeadsBase from "~/components/heads";
 import { api } from "~/utils/api";
 import AtomsAvatar from "~/components/atoms/avatar";
-import UserPosts from "~/components/organisms/userPosts";
+import OrganismsUserPosts from "~/components/organisms/userPosts";
 import Link from "next/link";
 import AtomsButtonBase from "~/components/atoms/button/base";
 import { CalendarIcon } from '@heroicons/react/24/solid'
@@ -70,7 +70,7 @@ const ProfilePage = () => {
             </div>
         </section>
       </div>
-      <UserPosts userId={data.id} />
+      <OrganismsUserPosts userId={data.id} />
     </>
   );
 }

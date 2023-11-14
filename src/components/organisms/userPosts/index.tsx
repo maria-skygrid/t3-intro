@@ -1,11 +1,11 @@
 import { api } from "~/utils/api"
 import MoleculesPost from "~/components/molecules/post";
 
-type UserPostsProps = {
+type OrganismsUserPostsProps = {
   userId: string
 }
 
-const UserPosts = ({ userId }: UserPostsProps) => {
+const OrganismsUserPosts = ({ userId }: OrganismsUserPostsProps) => {
   
   const {data} = api.posts.index.useQuery()
   
@@ -29,10 +29,9 @@ const UserPosts = ({ userId }: UserPostsProps) => {
 
   return (
     <div className="border-t border-t-slate-700">
-      {}
       {renderUserPosts}
     </div>
   )
 }
 
-export default UserPosts
+export default OrganismsUserPosts
