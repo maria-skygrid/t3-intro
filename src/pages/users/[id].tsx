@@ -1,3 +1,4 @@
+import { RouterOutputs } from "~/utils/api";
 import { api } from "~/utils/api";
 import HeadsBase from "~/components/heads";
 import AtomsAvatar from "~/components/atoms/avatar";
@@ -7,17 +8,22 @@ import MoleculesProfileHeader from "~/components/molecules/profile/header";
 import MoleculesProfileInformation from "~/components/molecules/profile/information";
 import OrganismsUserPosts from "~/components/organisms/userPosts";
 
+export type MoleculesPostType = RouterOutputs["posts"]["index"][number];
+
 const ProfilePage = () => {
 
   const { data } = api.profile.show.useQuery({username: 'maria-skygrid'})
-  const { data: posts } = api.posts.index.useQuery()
+  const { data: posts }: {data?: MoleculesPostType[]} = api.posts.index.useQuery()
 
   if(!data || !posts) return null;
 
   return (
     <>
       <HeadsBase />
-
+      <MoleculesProfileTop 
+        data={data}
+        posts={posts}
+      />
       <MoleculesProfileHeader />
       <div className='p-5 relative'>
         <AtomsAvatar 

@@ -9,7 +9,7 @@ import AtomsButtonBase from "~/components/atoms/button/base"
 import MoleculesPostIcons from "../postIcons"
 
 // 上記のtypeと同じですが、APIから取得してるデータで作成みたい。
-type MoleculesPostType = RouterOutputs["posts"]["index"][number];
+export type MoleculesPostType = RouterOutputs["posts"]["index"][number];
 
 const MoleculesPost = ({post, author}: MoleculesPostType) => {
   const { user } = useUser();
