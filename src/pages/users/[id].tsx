@@ -1,4 +1,4 @@
-import { RouterOutputs } from "~/utils/api";
+import type { RouterOutputs } from "~/utils/api";
 import { api } from "~/utils/api";
 import HeadsBase from "~/components/heads";
 import AtomsAvatar from "~/components/atoms/avatar";

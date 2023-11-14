@@ -1,7 +1,7 @@
 import { CalendarIcon } from '@heroicons/react/24/solid'
 import { GlobeAltIcon } from '@heroicons/react/24/outline';
 import { formatTime } from "~/utils/daysjs";
-import { User } from '@clerk/nextjs/dist/types/server';
+import type { User } from '@clerk/nextjs/dist/types/server';
 
 type MoleculesProfileInformationProps = {
   data: User
