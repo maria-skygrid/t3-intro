@@ -1,40 +1,24 @@
-import HeadsBase from "~/components/heads";
 import { api } from "~/utils/api";
+import HeadsBase from "~/components/heads";
 import AtomsAvatar from "~/components/atoms/avatar";
-import OrganismsUserPosts from "~/components/organisms/userPosts";
-import Link from "next/link";
 import AtomsButtonBase from "~/components/atoms/button/base";
-import { CalendarIcon } from '@heroicons/react/24/solid'
-import { GlobeAltIcon } from '@heroicons/react/24/outline';
-import { BiArrowBack } from "react-icons/bi"
-import { formatTime } from "~/utils/daysjs";
+import MoleculesProfileTop from "~/components/molecules/profile/top";
+import MoleculesProfileHeader from "~/components/molecules/profile/header";
+import MoleculesProfileInformation from "~/components/molecules/profile/information";
+import OrganismsUserPosts from "~/components/organisms/userPosts";
 
 const ProfilePage = () => {
 
   const { data } = api.profile.show.useQuery({username: 'maria-skygrid'})
   const { data: posts } = api.posts.index.useQuery()
 
-  if(!data) return null;
+  if(!data || !posts) return null;
 
   return (
     <>
       <HeadsBase />
-      <div className="p-4 gap-4 flex items-start">
-        <div className="flex items-center">
-          <Link 
-            href={`/`}
-            className="text-lg mr-3 px-3 py-3 rounded-full hover:bg-slate-500/20 transition-colors">
-            <BiArrowBack />
-          </Link>
-          <div>
-            <p>{data.username}</p>
-            <p className="text-sm text-slate-400">
-              {posts ? posts.length : 0} posts
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="bg-slate-900 h-[180px]"></div>
+
+      <MoleculesProfileHeader />
       <div className='p-5 relative'>
         <AtomsAvatar 
           src={data.imageUrl} 
@@ -50,25 +34,9 @@ const ProfilePage = () => {
             Edit profile
           </AtomsButtonBase>
         </div>
-        <section className="mt-3">
-          <h1 className="font-bold text-lg">{data.username}</h1>
-          <h2 className="text-slate-400">@{data.username}</h2>
-          <p className="mt-3">Bio</p>
-          <div className="flex mt-3 text-slate-400">
-            <div className="flex items-center mr-4">
-              <GlobeAltIcon className="w-4 h-4 mr-1" />
-              <p>Nara</p>
-            </div>
-            <div className="flex items-center mr-4">
-              <CalendarIcon className="w-4 h-4 mr-1" />
-              <p>Joined at {formatTime(data.createdAt)}</p>
-            </div>
-          </div>
-          <div className="flex items-center mr-4 mt-3">
-            <p className="text-slate-400 mr-4"><span className="font-bold text-white">0</span> Following</p>
-            <p className="text-slate-400 mr-4"><span className="font-bold text-white">0</span> Followers</p>
-            </div>
-        </section>
+        <MoleculesProfileInformation 
+          data={data}
+        />
       </div>
       <OrganismsUserPosts userId={data.id} />
     </>
