@@ -9,26 +9,22 @@ type MoleculesProfileTopProps = {
 }
 
 
-const MoleculesProfileTop = ({data, posts}: MoleculesProfileTopProps) => {
-  console.log(posts);
-  
-  return (
-    <div className="p-4 gap-4 flex items-start">
-      <div className="flex items-center">
-        <Link 
-          href={`/`}
-          className="text-lg mr-3 px-3 py-3 rounded-full hover:bg-slate-500/20 transition-colors">
-          <BiArrowBack />
-        </Link>
-        <div>
-          <p>{data.username}</p>
-          <p className="text-sm text-slate-400">
-            {posts ? posts.length : 0} posts
-          </p>
-        </div>
+const MoleculesProfileTop = ({data, posts}: MoleculesProfileTopProps) => (
+  <div className="p-4 gap-4 flex items-start">
+    <div className="flex items-center">
+      <Link 
+        href={`/`}
+        className="text-lg mr-3 px-3 py-3 rounded-full hover:bg-slate-500/20 transition-colors">
+        <BiArrowBack />
+      </Link>
+      <div>
+        <p>{data.username}</p>
+        <p className="text-sm text-slate-400">
+          {posts ? posts.length : 0} posts
+        </p>
       </div>
     </div>
-  )
-}
+  </div>
+)
 
 export default MoleculesProfileTop
