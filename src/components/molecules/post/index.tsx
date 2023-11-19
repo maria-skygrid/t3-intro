@@ -5,11 +5,11 @@ import { AiOutlineDelete } from "react-icons/ai"
 import { useUser } from "@clerk/nextjs" 
 import { api } from "~/utils/api"
 import Link from "next/link"
-import AtomsButtonPost from "~/components/atoms/button/post"
+import AtomsButtonBase from "~/components/atoms/button/base"
 import MoleculesPostIcons from "../postIcons"
 
 // 上記のtypeと同じですが、APIから取得してるデータで作成みたい。
-type MoleculesPostType = RouterOutputs["posts"]["index"][number];
+export type MoleculesPostType = RouterOutputs["posts"]["index"][number];
 
 const MoleculesPost = ({post, author}: MoleculesPostType) => {
   const { user } = useUser();
@@ -47,12 +47,12 @@ const MoleculesPost = ({post, author}: MoleculesPostType) => {
             <p>{post.content}</p>
           </div>
           {user?.id === author.id && (
-            <AtomsButtonPost
+            <AtomsButtonBase
               onClick={onClickMutate}
-              className="text-red-600 bg-red-100/30 hover:bg-red-100/40 "
+              className="px-3 py-1 text-red-600 bg-red-100/30 hover:bg-red-100/40 "
             >
               <AiOutlineDelete />
-            </AtomsButtonPost>
+            </AtomsButtonBase>
           )}
         </div>
         <MoleculesPostIcons />
